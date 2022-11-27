@@ -23,3 +23,4 @@ npm i
 npm run build
 npm run serve
 ```
+Open [Page](http://127.0.0.1:3000)
