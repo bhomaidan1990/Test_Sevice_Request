@@ -1,35 +1,15 @@
 import { Ros, Service, ServiceRequest } from "roslib";
 
-class ROSInterface {
-  constructor() {
-    this.ros = new Ros({
-      url: "ws://localhost:9090",
-    });
-  }
-
-  createService = (service_name, service_type) => {
-    const service = new Service({
-      ros: this.ros,
-      name: service_name,
-      serviceType: service_type,
-    });
-      console.log("Service Created!");
-    return service;
-  };
-
-}
-
 class PlanScheduler {
-  constructor() {
-    this.iface = new ROSInterface();
-    this.old_status = false;
-  }
+  constructor() {}
 
   execute_action = () => {
-    const service_name = "/pick_place";
-    const service_type = "print_service_server/PickPlace";
 
-    const srv = this.iface.createService(service_name, service_type);
+    const srv = new Service({
+      ros: new Ros({url: "ws://localhost:9090",}),
+      name: "/pick_place",
+      serviceType: "print_service_server/PickPlace",
+    });
 
     const params_ = {
       pick: {
