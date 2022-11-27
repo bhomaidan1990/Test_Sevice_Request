@@ -29,7 +29,9 @@ class PlanScheduler {
     const service_name = "/pick_place";
     const service_type = "print_service_server/PickPlace";
 
-    let params_ = {
+    const srv = this.iface.createService(service_name, service_type);
+
+    const params_ = {
       pick: {
         x: 0.1,
         y: 0.2,
@@ -45,7 +47,7 @@ class PlanScheduler {
     };
 
     const request = new ServiceRequest(params_);
-    let srv = this.iface.createService(service_name, service_type);
+
     srv.callService(request, function (result) {
       console.log("Service Called!");
       console.log(result);
