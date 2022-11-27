@@ -17,14 +17,6 @@ class ROSInterface {
     return service;
   };
 
-  callService = (service_name, service_type, params) => {
-    const service = this.createService(service_name, service_type);
-    const request = new ServiceRequest(params);
-      service.callService(request, function (result) {
-        console.log("Service Called!");
-      return result;
-    });
-  };
 }
 
 class PlanScheduler {
@@ -52,13 +44,14 @@ class PlanScheduler {
       arm: false,
     };
 
-    let result = this.iface.callService(service_name, service_type, params_);
-    console.log(result);
-    return result;
-  };
+    const request = new ServiceRequest(params_);
+    let srv = this.iface.createService(service_name, service_type);
+    srv.callService(request, function (result) {
+      console.log("Service Called!");
+      console.log(result);
+    });
+  }
 }
 
 var PS_ = new PlanScheduler();
-
-let res_ = PS_.execute_action();
-document.getElementById("container").innerHTML = res_;
+PS_.execute_action();
