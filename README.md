@@ -7,7 +7,7 @@
 ```
 roslaunch rosbridge_server rosbridge_websocket.launch 
 ```
-2. build the catkin workspace includin `print_service_server`:
+2. build the catkin workspace including `print_service_server`:
 
 ```
 catkin init
