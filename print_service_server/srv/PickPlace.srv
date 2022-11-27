@@ -1,0 +1,6 @@
+geometry_msgs/Point pick
+geometry_msgs/Point place
+uint16 speed
+bool arm
+---
+bool success

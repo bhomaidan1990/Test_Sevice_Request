@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>print_service_server</name>
+  <version>0.0.0</version>
+  <description>The yumi_rapid_interface package</description>
+
+  <maintainer email="s@s.com">belal</maintainer>
+
+  <license>LGPLv2.1</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+
+  <exec_depend>message_runtime</exec_depend>
+
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+</package>
