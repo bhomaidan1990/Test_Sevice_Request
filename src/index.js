@@ -1,16 +1,13 @@
-import { Ros, Service, ServiceRequest } from "roslib";
+import ROSInterface from "./js/ROSIface.js"
 
 class PlanScheduler {
-  constructor() {}
+  constructor() {
+    this.iface_ = new ROSInterface();
+  }
 
   execute_action = () => {
-
-    const srv = new Service({
-      ros: new Ros({url: "ws://localhost:9090",}),
-      name: "/pick_place",
-      serviceType: "print_service_server/PickPlace",
-    });
-
+    const service_name = "/pick_place";
+    const service_type = "print_service_server/PickPlace"; 
     const params_ = {
       pick: {
         x: 0.1,
@@ -26,12 +23,7 @@ class PlanScheduler {
       arm: false,
     };
 
-    const request = new ServiceRequest(params_);
-
-    srv.callService(request, function (result) {
-      console.log("Service Called!");
-      console.log(result);
-    });
+    this.iface_.callService_(service_name, service_type, params_)
   }
 }
 
